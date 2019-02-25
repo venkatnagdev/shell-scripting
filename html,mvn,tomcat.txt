@@ -1,0 +1,68 @@
+fi
+
+echo "download httpd"
+
+apt-get install update
+if [ $? -ne 0 ]; then
+  echo "failure"
+  exit
+else
+echo "success"
+fi
+
+echo "download httpd"
+
+apt-get install wget
+if [ $? -ne 0 ]; then
+  echo "failure"
+  exit
+else
+echo "success"
+fi
+
+echo "download apache"
+cd /opt
+
+mkdir tested
+
+cd /opt/tested
+wget http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz
+
+tar -xvf apache-tomcat-8.5.38.tar.gz
+if [ $? -ne 0 ]; then
+  echo "tomcat failure"
+  exit
+else
+echo "Tomcat success"
+fi
+
+
+echo "extract apache-tomcat"
+ls -ltr
+
+wget http://mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+
+tar -xvf apache-maven-3.6.0-bin.tar.gz
+if [ $? -ne 0 ];then
+  echo "maven failure"
+  exit
+else
+echo "maven success"
+fi
+
+ls
+
+echo "install jenkins"
+
+wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+if [ $? -ne 0 ];then
+  echo "jenkins failure"
+  exit
+else
+echo "jenkins success"
+fi
+
+sudo apt-get install jenkins
+echo "complate"
