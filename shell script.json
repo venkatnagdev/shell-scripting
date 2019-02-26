@@ -1,0 +1,36 @@
+#!bin/bash
+
+echo "install sample"
+ apt-get install httpd
+
+VALIDATE(){
+ if [ $1 -ne 0 ]; then
+  echo "failure"
+  exit
+else
+echo "success"
+fi 
+ }
+echo "download httpd"
+apt-get update
+VALIDATE $1
+ echo "download apache"
+cd /opt
+mkdir script
+cd /opt/script
+get http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz
+tar -xvf apache-tomcat-8.5.38.tar.gz
+VALIDATE $1
+echo "extract apache-tomcat"
+ls -ltr
+wget http://mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+tar -xvf apache-maven-3.6.0-bin.tar.gz
+VALIDATE $1
+ls
+echo "install jenkins"
+wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+  
+ sudo apt-get install jenkins
+ echo "jenkins success"
