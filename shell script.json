@@ -28,9 +28,9 @@ sudo apt install oracle-java8-installer
 sudo apt-get update
 echo "install java"
 
-wget http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.39/bin/apache-tomcat-8.5.39.tar.gz
+http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
 
-tar -xvf apache-tomcat-8.5.38.tar.gz
+tar -xvf apache-tomcat-8.5.40.tar.gz
 VALIDATE $1
 echo "extract apache-tomcat"
 ls -ltr
