@@ -1,0 +1,62 @@
+What is Shell Scripting?
+A shell script is a computer program designed to be run by the Unix shell, 
+a command-line interpreter. 
+The various dialects of shell scripts are considered to be scripting languages.
+Typical operations performed by shell scripts include file manipulation, program execution, and printing text. 
+
+What are the different Shells?
+ The Bourne shell (sh), 
+The C shell (csh): ...
+The Korn shell (ksh): ...
+The GNU Bourne-Again shell (bash):
+
+#   :hash
+ /  :slash or forward slas
+ \   :back slash
+ |  :pipe or bar
+ ()  : parenthesis
+ !  :exclamation  mark
+ :   :colon
+ ;   :semi-colon
+ 
+ 1)find: Fifind to search for a file or directory
+ chmod u+x filename
+ chomod u+r filename
+ chmod u+w filename
+ 
+ 
+what is shell scripting one by one step
+#!/bin/bash
+
+Ex :1
+
+#!/bin/bash
+echo "Enter yor date:" "date"
+echo "Enter your date:" `date`
+
+create user
+#!/bin/bash
+echo "hello venkat"
+read -p "enter username: " uname
+useradd $uname
+echo "sucessfull"
+echo $uname "1234qw" | passwd --stdin "$uname"
+echo "passwd successfully"
+
+
+#!/bin/bash
+echo "hello venkat"
+read -p "enter username: " uname
+useradd $uname
+echo "sucessfull"
+read -p "enter you passwd: " pword
+passwd "$uname"
+echo "passwd successfully"
+
+
+
+
+
+
+
+
