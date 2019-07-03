@@ -103,3 +103,109 @@ sudo apt-get update
   
  sudo apt-get install jenkins
  echo "jenkins success"
+
+-----------------------------------------------------------------------------------------------------------------------
+ A shell script is small computer program that is designed to be run or executed
+ by the Unix shell, which is a command-line interpreter.
+ A shell script is basically a set of commands that the shell in a 
+ Unix-based operating system 
+  
+ $0, $1, $2, $3 . . . $0 is the name of the script itself, 
+ $1 is the first argument,
+ $2 the second, $3 the third, and so forth. 
+  
+  $# -The number of arguments supplied
+  $$ -The process number of the current shell
+   $# is a special variable in bash
+   
+  create user
+#!/bin/bash
+echo "hello venkat"
+read -p "enter username: " uname
+useradd $uname
+echo "sucessfull"
+echo $uname "1234qw" | passwd --stdin "$uname"
+echo "passwd successfully"
+
+
+#!/bin/bash
+echo "hello venkat"
+read -p "enter username: " uname
+useradd $uname
+echo "sucessfull"
+read -p "enter you passwd: " pword
+passwd "$uname"
+echo "passwd successfully"
+
+
+
+
+  #!bin/bash
+
+echo "install sample"
+ apt-get install httpd
+
+VALIDATE(){
+ if [ $1 -ne 0 ]; then
+  echo "failure"
+  exit
+else
+echo "success"
+fi 
+ }
+echo "download httpd"
+apt-get update
+VALIDATE $1
+ echo "download apache"
+cd /opt
+mkdir script
+cd /opt/script
+echo "download java"
+wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.tar.gz
+tar -xvf jdk-8u201-linux-x64.tar.gz
+echo "tar in java"
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt install oracle-java8-installer
+sudo apt-get update
+echo "install java"
+echo "extract apache-tomcat"
+ls -ltr
+wget http://mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+tar -xvf apache-maven-3.6.0-bin.tar.gz
+VALIDATE $1
+echo "install tomcat"
+wget http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.39/bin/apache-tomcat-8.5.39.tar.gz
+
+tar -xvf apache-tomcat-8.5.38.tar.gz
+VALIDATE $1
+
+ls
+echo "install jenkins"
+wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+  
+ sudo apt-get install jenkins
+ echo "jenkins success"
+ 
+-------------------------------------------------------------------------- 
+ 5: How will you pass and access arguments to a script in Linux?
+
+Arguments can be passed as:
+
+scriptName "Arg1" "Arg2"…."Argn" and can be accessed inside the script as $1 , $2 .. $n
+
+6: What is the significance of $#?
+
+$# shows the count of the arguments passed to the script.
+$@ treats each quoted arguments as separate arguments
+$* will consider the entire set of positional parameters as a single string.
+
+7)How will you find the 99th line of a file using only tail and head command?
+
+tail +99 file1|head -1
+
+12: Print the 10th line without using tail and head command.
+
+sed –n '10p' file1
