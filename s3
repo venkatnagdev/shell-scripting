@@ -1,0 +1,3 @@
+aws s3 cp s3://com.yoursitename/warFile/sample.war /tmp
+sudo mv /tmp/sample.war /var/lib/tomcat/webapps/ROOT.war
+sudo service tomcat restart
